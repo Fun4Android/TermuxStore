@@ -17,7 +17,7 @@ shift 1
 
 case "$CMD" in
 	h*) show_help;;
-	i*) bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/$@/config.sh)"&&echo 'Software Not Found,Please Check You Input';
+	i*) bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/$@/config.sh)"&&echo 'Software Not Found,Please Check You Input';;
 	list) bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/list/config.sh)" ;;
 	*) echo "Unknown command: '$CMD' (run 'sft help' for usage information)";;
 esac
