@@ -1,7 +1,24 @@
-#/bin/bash
-echo Welcome to Tershop
-if [ "$HOME" == "/data/data/com.termux/files/home" ]; then
-echo 请进入Termux-chroot模式再运行本程序;
-else
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/$1/config.sh)"
-fi
+#!/data/data/com.termux/files/usr/bin/sh
+set -e -u
+
+show_help() {
+	echo 'Software Installer'
+	echo ''
+	echo 'A Tool Help You Complier Softwares'
+	echo ''
+	echo '  install <packages>'
+	echo '  list'
+	exit 1
+}
+
+if [ $# = 0 ]; then show_help; fi
+CMD="$1"
+shift 1
+
+case "$CMD" in
+	h*) show_help;;
+	i*) bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/$@/config.sh)"&&echo 'Software Not Found,Please Check You Input';
+	list) bash -c "$(curl -fsSL https://raw.githubusercontent.com/YadominJinta/TermuxStore-Src/master/config/list/config.sh)" ;;
+	*) echo "Unknown command: '$CMD' (run 'sft help' for usage information)";;
+esac
+
